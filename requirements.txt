@@ -1,0 +1,21 @@
+# 核心数据处理
+pandas>=2.0.0
+numpy>=1.24.0
+openpyxl>=3.1.0
+pyarrow>=12.0.0
+
+# 可视化与报告生成
+matplotlib>=3.7.0
+reportlab>=4.0.0
+markdown>=3.4.0
+
+# LLM模块依赖（可选）
+openai>=1.0.0  # 使用OpenAI API时需要
+requests>=2.31.0  # 通用HTTP请求库
+
+# OSS上传功能（可选）
+oss2>=2.19.0  # 阿里云OSS SDK
+
+# 环境变量管理
+python-dotenv>=1.0.0  # 从.env文件加载环境变量
+

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+build/
+dist/
+
+# 虚拟环境
+env/
+venv/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# 环境变量和配置（包含敏感信息）
+.env
+.env.local
+.env.*.local
+
+# 例外：允许.env.example示例文件
+!.env.example
+
+# 数据文件（不纳入版本控制）
+data/raw/
+*.xlsx
+*.xls
+*.csv
+
+# 例外：允许data-demo目录下的演示数据
+!data-demo/*.xlsx
+!data-demo/*.xls
+
+# 输出文件（可选，根据需要调整）
+# output/
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.bak
+*~
+
