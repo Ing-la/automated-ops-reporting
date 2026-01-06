@@ -68,6 +68,40 @@ class ConfigGUI:
         
         # 创建界面
         self.create_widgets()
+    
+    def check_env_file(self):
+        """检查.env文件是否存在，如果不存在则提示用户创建"""
+        env_file = PROJECT_ROOT / '.env'
+        env_example = PROJECT_ROOT / '.env.example'
+        
+        if not env_file.exists():
+            if env_example.exists():
+                # 询问用户是否要创建.env文件
+                response = messagebox.askyesno(
+                    "配置文件缺失",
+                    "未找到 .env 配置文件。\n\n"
+                    "是否要从 .env.example 创建 .env 文件？\n\n"
+                    "（点击'是'将自动创建，点击'否'可以稍后手动创建）"
+                )
+                if response:
+                    try:
+                        import shutil
+                        shutil.copy2(env_example, env_file)
+                        # 使用 print 而不是 self.log，因为此时界面还未创建
+                        print("✅ 已从 .env.example 创建 .env 文件")
+                        messagebox.showinfo("成功", "已创建 .env 文件，请编辑配置后使用")
+                        # 重新加载配置
+                        self.load_from_env()
+                    except Exception as e:
+                        print(f"❌ 创建 .env 文件失败: {e}")
+                        messagebox.showerror("错误", f"创建 .env 文件失败: {e}")
+            else:
+                messagebox.showwarning(
+                    "配置文件缺失",
+                    "未找到 .env 配置文件，且 .env.example 也不存在。\n\n"
+                    "请参考文档创建配置文件，或运行初始化脚本：\n"
+                    "python scripts/init_env.py"
+                )
         
     def load_from_env(self):
         """从.env文件加载所有配置"""
