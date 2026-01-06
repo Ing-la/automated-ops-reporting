@@ -1,6 +1,7 @@
 """
 初始化环境配置文件
 从 .env.example 复制创建 .env 文件（如果不存在）
+同时创建必要的目录结构
 """
 import shutil
 from pathlib import Path
@@ -9,8 +10,40 @@ PROJECT_ROOT = Path(__file__).parent.parent
 ENV_EXAMPLE = PROJECT_ROOT / '.env.example'
 ENV_FILE = PROJECT_ROOT / '.env'
 
+def init_directories():
+    """创建必要的目录结构"""
+    directories = [
+        PROJECT_ROOT / 'data' / 'raw',
+        PROJECT_ROOT / 'data' / 'snapshot',
+        PROJECT_ROOT / 'data' / 'history',
+        PROJECT_ROOT / 'output',
+    ]
+    
+    created_dirs = []
+    for directory in directories:
+        try:
+            directory.mkdir(parents=True, exist_ok=True)
+            if not (directory / '.gitkeep').exists():
+                # 如果目录是新创建的，创建 .gitkeep 文件
+                (directory / '.gitkeep').touch()
+                created_dirs.append(str(directory.relative_to(PROJECT_ROOT)))
+        except Exception as e:
+            print(f"⚠️  创建目录失败 {directory}: {e}")
+    
+    if created_dirs:
+        print(f"✓ 已创建目录结构:")
+        for dir_path in created_dirs:
+            print(f"  - {dir_path}/")
+    else:
+        print("✓ 目录结构已存在")
+
 def init_env():
-    """初始化 .env 文件"""
+    """初始化 .env 文件和目录结构"""
+    # 先创建目录结构
+    init_directories()
+    print()
+    
+    # 然后创建 .env 文件
     if ENV_FILE.exists():
         print(f"✓ .env 文件已存在: {ENV_FILE}")
         print("  如需重新初始化，请先删除现有 .env 文件")

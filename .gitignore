@@ -30,7 +30,8 @@ ENV/
 !.env.example
 
 # 数据文件（不纳入版本控制）
-data/raw/
+data/raw/*
+!data/raw/.gitkeep
 *.xlsx
 *.xls
 *.csv
@@ -39,8 +40,17 @@ data/raw/
 !data-demo/*.xlsx
 !data-demo/*.xls
 
-# 输出文件（可选，根据需要调整）
-# output/
+# snapshot目录：保留目录结构，但忽略CSV文件（如果需要的话）
+# 注意：snapshot CSV文件通常需要版本控制，所以这里不忽略
+# data/snapshot/*.csv
+
+# history目录：保留目录结构，但忽略内容
+data/history/*
+!data/history/.gitkeep
+
+# 输出文件：保留目录结构，但忽略内容
+output/*
+!output/.gitkeep
 
 # 日志文件
 *.log
