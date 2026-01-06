@@ -58,6 +58,10 @@ python scripts/init_env.py
 python scripts/gui_app.py
 ```
 
+**演示效果**：
+
+![GUI界面演示](docs/images/gui-workflow-demo.gif)
+
 #### 方式2：命令行
 
 ```bash
@@ -67,6 +71,12 @@ python scripts/run_monthly.py
 # 手动指定参数
 python scripts/run_monthly.py 2025-12 ops_data_2025_12.xlsx --include-llm --upload-oss
 ```
+
+## 📱 飞书推送效果
+
+启用飞书推送功能后，报告摘要会自动推送到飞书，支持卡片格式展示：
+
+![飞书推送演示](docs/images/feishu-push-demo.gif)
 
 ## 📖 文档
 
