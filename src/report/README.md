@@ -59,3 +59,6 @@ report_path = generate_monthly_report('2025-12')
 
 
 
+
+
+
