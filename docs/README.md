@@ -33,12 +33,18 @@
 
 ```bash
 # 克隆项目
-git clone <repository-url>
-cd "Ops Risk Analytics"
+git clone https://github.com/Ing-la/automated-ops-reporting.git
+
+# 进入项目目录
+cd automated-ops-reporting
 
 # 安装依赖
 pip install -r requirements.txt
 ```
+
+**注意**：如果安装依赖时遇到编码错误（`UnicodeDecodeError: 'gbk' codec can't decode`），请确保：
+- 使用 Python 3.8+ 版本
+- 在 Windows 系统上，可以尝试先执行 `chcp 65001` 设置命令行编码为 UTF-8
 
 ### 2. 配置环境变量
 

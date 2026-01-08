@@ -31,7 +31,9 @@
 ```bash
 # 克隆项目
 git clone https://github.com/Ing-la/automated-ops-reporting.git
-cd "Ops Risk Analytics"
+
+# 进入项目目录
+cd automated-ops-reporting
 
 # 安装依赖
 pip install -r requirements.txt
